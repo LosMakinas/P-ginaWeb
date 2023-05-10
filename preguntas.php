@@ -4,16 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
     <title>Document</title>
 </head>
 <body>
 
-=======
     <link rel="stylesheet" href="css/style.css">
     <title>Informatikalmi</title>
 </head>
 <body>
+  <img src="images/logo-definitivo.png" alt="img Logo" id="logoClick">
+  <div id="hamburgesa">
+    <img src="images/logo-definitivo.png" alt="img Logo" id="logo">
+    <div id="enlaces">
+      <a href="index.php">Home</a>
+      <a href="index.php">Crear Pregunta</a>
+      <a href="login.php">Login</a>
+      <a href="register.php">Registro</a>
+    </div>
+  </div>
     <div id = "contenido">
     <h2 id="titulo">Agrega una nueva pregunta</h2>
     <form>
@@ -44,6 +52,7 @@
 
     </footer>
     </div>
->>>>>>> f2fa098 (diseño inicial creado)
 </body>
+<script src="js/jquery-3.6.4.min.js"></script>
+<script src="js/addPregunta.js"></script>
 </html>
