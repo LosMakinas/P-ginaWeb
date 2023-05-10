@@ -1,0 +1,94 @@
+body, html
+{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+body{
+    display: grid;
+    grid-template-columns: 1fr 1000px 1fr;
+    align-items: center;
+    background-image: url("../images/Galaxy_repeating.png");
+}
+
+#contenido
+{
+    grid-row: 1;
+    grid-column: 2 / 3;
+}
+
+#titulo
+{
+    
+    justify-self: center;
+    margin-top: 30px;
+    font-size: 36px;
+    font-family: Arial, sans-serif;
+}
+
+form
+{
+    
+    display: flex;
+    flex-direction: column;
+}
+
+input[type="submit"] {
+    background-color: #0077FF;
+    border: none;
+    border-radius: 3px;
+    color: #FFF;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px;
+    min-height: 60px;
+}
+
+input[type="text"], textarea {
+    border: 1px solid #DDD;
+    border-radius: 3px;
+    font-size: 16px;
+    padding: 10px;
+    margin-bottom: 20px;
+    min-height: 40px;
+    resize: none;
+}
+  
+input[type="submit"]:hover {
+    background-color: #0055CC;
+    
+}
+
+label
+{
+    font-size: large;
+}
+
+input[type="text"]
+{
+    min-height: 30px;
+}
+
+#radio
+{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+#radio > input[type="radio"]
+{
+    margin-right: 50px;
+}
+
+#labelRadios
+{
+    margin-bottom: 20px;
+}
+
+label, h2
+{
+    color: white;
+}
