@@ -117,8 +117,31 @@ input[type="text"], textarea {
 }
   
 input[type="submit"]:hover {
-    background-color: #0055CC;
-    
+    background-color: #0055CC;    
+}
+
+#imagen
+{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+input[type="file"]
+{
+    font-size: 0;
+    color: transparent;
+}
+
+input[type="file"]::file-selector-button
+{
+    border: 1px solid #DDD;
+    border-radius: 3px;
+    font-size: 16px;
+    padding: 10px;
+    margin-bottom: 20px;
+    min-height: 40px;
+    resize: none;
 }
 
 label
@@ -132,6 +155,44 @@ input[type="text"]
 {
     min-height: 30px;
 }
+
+input[type="number"]
+{
+    width: 50px;
+    margin-bottom: 20px;
+    border: 1px solid #DDD;
+    border-radius: 3px;
+    font-size: 16px;
+    min-height: 30px;
+    resize: none;
+}
+
+select
+{
+    
+    margin-bottom: 20px;
+    border: 1px solid #DDD;
+    border-radius: 3px;
+    font-size: 16px;
+    min-height: 30px;
+    resize: none;  
+}
+
+#temporizador
+{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.dropdownDif
+{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+
 
 #radio
 {
@@ -152,7 +213,77 @@ input[type="text"]
     margin-bottom: 20px;
 }
 
-label, h2
+label, h2, h3, p, h4
 {
     color: white;
 }
+
+/*esto es de la otra pagina
+    TODO: separar los css
+*/
+
+ul
+{
+    list-style: none;
+}
+
+li img
+{
+    width: 246px;
+    height: 246px;
+    align-self: center;
+}
+
+.actions {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+  }
+  
+  .btn-favorite, .btn-report {
+    background-color: #FFF;
+    border: 1px solid #DDD;
+    border-radius: 3px;
+    color: #0077FF;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px;
+  }
+  
+  .btn-favorite:hover, .btn-report:hover {
+    background-color: #F0F0F0;
+  }
+  
+  .btn-vote {
+    background-color: #0077FF;
+    border: none;
+    border-radius: 3px;
+    color: #FFF;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px;
+    width: 40px;
+  }
+  
+  .btn-vote:hover {
+    background-color: #0055CC;
+  }
+
+  li p, h3, h4
+  {
+    font-size: larger;
+    margin-bottom: 10px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-decoration: none;
+  }
+
+  li
+  {
+    background-color: rgba(128, 128, 128, 0.205);
+    border: 1px solid silver;
+    border-radius: 20px;
+    padding: 3px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+  }

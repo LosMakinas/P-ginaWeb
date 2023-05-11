@@ -12,16 +12,9 @@
     <title>Informatikalmi</title>
 </head>
 <body>
-  <img src="images/logo-definitivo.png" alt="img Logo" id="logoClick">
-  <div id="hamburgesa">
-    <img src="images/logo-definitivo.png" alt="img Logo" id="logo">
-    <div id="enlaces">
-      <a href="index.php">Home</a>
-      <a href="index.php">Crear Pregunta</a>
-      <a href="login.php">Login</a>
-      <a href="register.php">Registro</a>
-    </div>
-  </div>
+  <?php
+  include_once 'menu.php';
+  ?>
     <div id = "contenido">
     <h2 id="titulo">Agrega una nueva pregunta</h2>
     <form>
@@ -35,6 +28,29 @@
       <textarea id="respuesta" name="respuesta" required></textarea>
       <label for="respuesta">Respuesta 4:</label>
       <textarea id="respuesta" name="respuesta" required></textarea>
+      <div id="imagen">
+        <label for="image">Imagen: </label>
+        <input type="file" title=" " required>
+      </div>
+      <div id="temporizador">
+      <label for="tiempo">Segundos para resolver la pregunta:</label>
+      <input type="number" name="tiempo" required>
+      </div>
+      <div class="dropdownDif">
+        <label for="dificultades">Dificultades:</label>
+        <select name="dificultades" id="" required>
+          <option value="1">Facil</option>
+          <option value="2">Normal</option>
+          <option value="3">Dificil</option>
+        </select>
+      </div>
+        <div class="dropdownDif">
+        <label for="dificultades">Tematica:</label>
+        <select name="dificultades" id="" required>
+          <option value="FOL">FOL</option>
+          <option value="Ingles">Ingles</option>
+        </select>
+      </div>
       <label for="radios" id="labelRadios">Cual es la correcta:</label>
       <div id="radio">
       <label for="pregunta1">Pregunta 1:</label>
@@ -48,11 +64,6 @@
       </div>
       <input type="submit" value="Agregar pregunta">
     </form>
-    <footer>
-
-    </footer>
     </div>
 </body>
-<script src="js/jquery-3.6.4.min.js"></script>
-<script src="js/addPregunta.js"></script>
 </html>
