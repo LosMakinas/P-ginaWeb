@@ -34,19 +34,21 @@
       </div>
       <div id="temporizador">
       <label for="tiempo">Segundos para resolver la pregunta:</label>
-      <input type="number" name="tiempo" required>
+      <input type="number" name="tiempo" id="tiempo" required>
       </div>
       <div class="dropdownDif">
         <label for="dificultades">Dificultades:</label>
-        <select name="dificultades" id="" required>
+        <select name="dificultades" id="dificultades" required>
+          <option value="-1">Seleccione un campo</option>
           <option value="1">Facil</option>
           <option value="2">Normal</option>
           <option value="3">Dificil</option>
         </select>
       </div>
         <div class="dropdownDif">
-        <label for="dificultades">Tematica:</label>
-        <select name="dificultades" id="" required>
+        <label for="tematica">Tematica:</label>
+        <select name="tematica" id="tematica" required>
+          <option value="-1">Seleccione un campo</option>
           <option value="FOL">FOL</option>
           <option value="Ingles">Ingles</option>
         </select>
@@ -65,5 +67,7 @@
       <input type="submit" value="Agregar pregunta">
     </form>
     </div>
+    <script src="js/jquery-3.6.4.min.js"></script>
+    <script src="js/preguntas.js"></script>
 </body>
 </html>
