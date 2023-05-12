@@ -4,6 +4,7 @@ $(document).ready(function()
     let boolTextFiled = false;
     let boolRadio = false;
     let boolImg = false;
+    let boolTem = false;
     let boolSegs = false;
 
     $(".pregunta").keyup(function()
@@ -20,66 +21,61 @@ $(document).ready(function()
         boolTextFiled = true;
     }
 
-    console.log(boolTextFiled);
+    
 
     });
 
     $("#enviarPreg").click(function(event)
     {
         
-        if(boolTextFiled == false || boolDropdown == false)
+        if(boolTextFiled == false || boolSegs == false || boolDropdown == false || boolTem == false)
         {
-            alert("Datos incorrectos");
             event.preventDefault();
         }
 
         if (boolTextFiled == false) {
             $(".pregunta").css({backgroundColor: 'red'});    
         }
-        
-        var dificultad = $("#dificultades").val();
-        var tematica = $("#tematica").val();
-        var tiempo = $("#tiempo").val();
-       
-        
-
-        var espacioVacio = true;
-
-        if(boolTextFiled)
-        {
-            
-            espacioVacio = false;
-        }
-        if($(".radioPreg").attr("checked","true"))
-        {
-            espacioVacio = true; 
-        }else{
-            espacioVacio = false; 
-        }
-        if(dificultad == -1)
-        {
-            espacioVacio = false;
-        }
-        if(tematica == -1)
-        {
-            espacioVacio = false;
-        }
-        if(tiempo < 0)
-        {
-            espacioVacio = false;
-            tiempo.val() = 0;   
-        }
-        
-        
+        console.log(boolTextFiled);
+        console.log(boolSegs);
+        console.log(boolDropdown);
+        console.log(boolTem);
     });
-    $("#contenido").keypress(function()
+
+    $("#tematica").change(checkValTem);
+    $("#dificultades").change(checkValDif); 
+
+    $("#tiempo").keyup(checkNum);
+    $("#tiempo").change(checkNum);
+
+    function checkValTem()
     {
-        var RestricionLetras = /(?=.*[\!@#$%&^()\\[\]{}\-_+=|:;"'<>,./?])(?=.*[a-z])(?=.*[A-Z])(?=(.*)).{2,}/;
-        if(tiempo == RestricionLetras)
+        if($(this).val() == -1)
         {
-            espacioVacio = false;
+            boolTem = false;
+        }else{
+            boolTem = true;
         }
-        
-    });
+    };
 
+    function checkValDif()
+    {
+        if($(this).val() == -1)
+        {
+            boolDropdown = false;
+        }else{
+            boolDropdown = true;
+        }
+    };  
+
+    function checkNum()
+    {
+        var RestricionLetras = /^[0-9]+$/;
+        if(RestricionLetras.test($("#tiempo").val()) && $("#tiempo").val() >= 10)
+        {
+            boolSegs = true;
+        } else {
+            boolSegs = false;
+        }
+    };
 });
