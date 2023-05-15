@@ -17,20 +17,31 @@ $(document).ready(function () {
     $("#pass2").keyup(checkPass);
 
     function checkPass() {
-        arrayBools[2] = $(this).val() == $("#pass2").val();
+        arrayBools[2] = $("#pass1").val() == $("#pass2").val();
     }
 
 
     $("#registrar").click(function () {
         event.preventDefault();
             for (let index = 0; index <= arrayBools.length; index++) {
-                console.log({"usu": boolUsu, "pass": boolPass, "correo": boolCor, "indice" : index});
+                //console.log({"usu": boolUsu, "pass": boolPass, "correo": boolCor, "indice" : index});
                 if (index == arrayBools.length) {
-                    console.log(arrayBools[index]);
                     $("form").submit();
                 }                
 
                 if (arrayBools[index] == false) {
+                    switch (index) {
+                        case 0:
+                            $("#error").text("Error: Usuario repetido o invalido");
+                        break;
+                        case 1:
+                            $("#error").text("Error: Correo electronico invalido");
+                        break;
+                        case 2:
+                            $("#error").text("Error: Contraseña invalida");
+                        break;
+                    }
+                    $("#error").show();
                     return;
                 }
                 

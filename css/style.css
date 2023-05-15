@@ -9,7 +9,7 @@ body{
     display: grid;
     grid-template-columns: 1fr 1000px 1fr;
     align-items: center;
-    background-image: url("../images/Galaxy_repeating.png");
+    background-color: #415161
 }
 
 #contenido
@@ -133,6 +133,11 @@ input[type="file"]
     color: transparent;
 }
 
+.fileRed::file-selector-button
+{
+    background-color: red;
+}
+
 input[type="file"]::file-selector-button
 {
     border: 1px solid #DDD;
@@ -192,7 +197,14 @@ select
     align-items: flex-end;
 }
 
-
+#error
+{
+    display: none;
+    color: red;
+    font-size: larger;
+    border: 1px solid red;
+    padding: 5px;
+}
 
 #radio
 {

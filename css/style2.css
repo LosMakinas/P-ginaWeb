@@ -1,0 +1,139 @@
+#titulo
+{
+    
+    justify-self: center;
+    margin-top: 30px;
+    font-size: 36px;
+    font-family: Arial, sans-serif;
+}
+
+#header-carousel
+{
+    background-color: #415161;
+}
+
+.header {
+    background-image: url();
+}
+
+
+form
+{
+    
+    display: flex;
+    flex-direction: column;
+}
+
+input[type="submit"] {
+    background-color: #0077FF;
+    border: none;
+    border-radius: 3px;
+    color: #FFF;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px;
+    min-height: 60px;
+}
+
+input[type="text"], input[type="password"], textarea {
+    border: 1px solid #DDD;
+    border-radius: 3px;
+    font-size: 16px;
+    padding: 10px;
+    margin-bottom: 20px;
+    min-height: 40px;
+    resize: none;
+}
+  
+input[type="submit"]:hover {
+    background-color: #0055CC;    
+}
+
+#imagen
+{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+input[type="file"]
+{
+    font-size: 0;
+    color: transparent;
+}
+
+.fileRed::file-selector-button
+{
+    background-color: red;
+}
+
+input[type="file"]::file-selector-button
+{
+    border: 1px solid #DDD;
+    border-radius: 3px;
+    font-size: 16px;
+    padding: 10px;
+    margin-bottom: 20px;
+    min-height: 40px;
+    resize: none;
+}
+
+label
+{
+    font-size: larger;
+    margin-bottom: 10px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+input[type="text"]
+{
+    min-height: 30px;
+}
+
+input[type="number"]
+{
+    width: 50px;
+    margin-bottom: 20px;
+    border: 1px solid #DDD;
+    border-radius: 3px;
+    font-size: 16px;
+    min-height: 30px;
+    resize: none;
+}
+
+#error
+{
+    display: none;
+    color: red;
+    font-size: larger;
+    border: 1px solid red;
+    padding: 5px;
+}
+
+li > img
+{
+    height: 256px;
+    width: 256px;
+}
+
+li > p
+{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: larger;
+    color: white;
+}
+li
+{
+    margin-bottom: 10px;
+}
+
+.actions
+{
+    display: flex;
+    justify-content: space-around;
+}
+
+.btn-report, .btn-favorite
+{
+    border-radius: 20px;
+}
