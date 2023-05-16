@@ -50,8 +50,12 @@
                 return $preguntasRet;
         }
 
+        $preguntas = conectarUrl();
         //var_dump(conectarUrl());
-        var_dump(getPreguntas());
+
+        //$respuesta = $preguntas[0]['respuestas'][0]['respuesta1'];
+        //var_dump($respuesta);
+        //var_dump(getPreguntas());
         
 
 ?>

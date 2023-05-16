@@ -41,7 +41,7 @@
                         <a class="nav-link" href="register.php">Registro</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php">Ver Preguntas</a>
+                        <a class="nav-link" href="verPreguntas.php">Ver Preguntas</a>
                     </li>
                     <li class="nav-item ml-0 ml-lg-4">
                         <a class="nav-link btn btn-primary" href="preguntas.php">Crear Pregunta</a>
@@ -64,39 +64,35 @@
                                 <h2 id="titulo">Preguntas almacenadas</h2>
                                 <ul>
                                   <li>
-                                    <h3>¿Qué es HTML?</h3>
-                                    <h4>HTML es un lenguaje de marcado utilizado para crear páginas web.</h4>
-                                    <img src="images/logo-definitivo.png" alt="Imagen Pregunta">
-                                    <p>Respuesta 1</p>
-                                    <p>Respuesta 2</p>
-                                    <p>Respuesta 3</p>
-                                    <p>Respuesta 4</p>
-                                    <p><b>Segundos para resolverlo:</b> 60</p>
-                                    <p><b>Tema: </b>FOL</p>
-                                    <p><b>Dificultad:</b> Facil</p>
-                                    <div class="actions">
-                                        <button class="btn-favorite">Editar</button>
-                                        <button class="btn-favorite">Dar de alta</button>
-                                        <button class="btn-report">Eliminar</button>
-                                    </div>
+                                    <?php
+
+                                        include_once 'bbdd.php';
+                                        $preguntas = conectarUrl(); 
+                                        $tamaño = sizeof($preguntas);
+
+                                        for($i = 0; $i < $tamaño; $i++)
+                                        {
+                                            echo '<h3>'.$preguntas[$i]['pregunta'].'</h3>';
+                                            echo '<h4>'.$preguntas[$i]['descripcion'].'</h4>';
+                                            for($j = 0; $j < 4; $j++)
+                                            {
+                                                echo '<p>Respuesta '.($j+1).': '.$preguntas[$i]['respuestas'][$j]['respuesta'.($j+1)].'</p>';
+                                            }
+
+                                            echo '<p><b>Segundos para resolverlo: </b>'.$preguntas[$i]['tiempo'].'</p>';
+                                            echo '<p><b>Tema: </b>'.$preguntas[$i]['tematica'].'</p>';
+                                            echo '<p><b>Dificultad: </b>'.$preguntas[$i]['dificultad'].'</p>';
+
+                                            echo '<div class="actions">';
+                                                echo '<button class="btn-favorite">Editar</button>';
+                                                echo '<button class="btn-favorite">Dar de alta</button>';
+                                                echo '<button class="btn-report">Eliminar</button>';
+                                            echo '</div>';
+                                        }
+                                        
+                                        ?>
                                   </li>
-                                  <li>
-                                    <h3>¿Qué es CSS?</h3>
-                                    <h4>CSS es un lenguaje utilizado para dar estilo a las páginas web.</h4>
-                                    <img src="images/logo-definitivo.png" alt="Imagen Pregunta">
-                                    <p>Respuesta 1</p>
-                                    <p>Respuesta 2</p>
-                                    <p>Respuesta 3</p>
-                                    <p>Respuesta 4</p>
-                                    <p><b>Segundos para resolverlo:</b> 60</p>
-                                    <p><b>Tema: </b>FOL</p>
-                                    <p><b>Dificultad:</b> Facil</p>
-                                    <div class="actions">
-                                      <button class="btn-favorite">Editar</button>
-                                      <button class="btn-favorite">Dar de alta</button>
-                                      <button class="btn-report">Eliminar</button>
-                                    </div>
-                                  </li>
+                                  
                                 </ul>
                                 </div>
                         </div>
