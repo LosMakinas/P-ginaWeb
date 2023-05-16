@@ -1,59 +1,57 @@
 <?php
 
-/*
-  $url = "http://127.0.0.1:8080/api/preguntasIngles";    
- 
-                $curl = curl_init($url);
-                curl_setopt($curl, CURLOPT_HEADER, false);
-                curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-                curl_setopt($curl, CURLOPT_HTTPHEADER, array("Content-type: application/json"));
-                curl_setopt($curl, CURLOPT_POST, true);
-                curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
- 
-                $json_response = curl_exec($curl);
-                $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
- 
-                curl_close($curl);
-                $response = json_decode($json_response, true);
-                $response=(object)$response;
- 
-                $sessionKey= $response->results['session-key'];
-        */
-                echo $json_parameters.'</br>';
-                echo $signature.'</br>';
-                echo $sessionKey.'</br>';
- 
- 
-                $json_parameters = json_encode((Array)$parameters);
-                $signature = md5($json_parameters . $session_key);
     
+        function conectarUrl()
+        {
+                $url = 'http://192.168.0.97:8080/api/preguntasIngles';    
+ 
+                $curl = curl_init();
 
-                $url = "http://127.0.0.1:8080/api/preguntasIngles";    
-                
- 
- 
-                $curl = curl_init($url);
-                curl_setopt($curl, CURLOPT_HEADER, false);
+                curl_setopt($curl, CURLOPT_URL, $url);
+
                 curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-                curl_setopt($curl, CURLOPT_HTTPHEADER, array("Content-type: application/json"));
-                curl_setopt($curl, CURLOPT_POST, true);
-                curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
- 
-                $json_response = curl_exec($curl);
-                $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-              
- 
-                curl_close($curl);
-                $response = json_decode($json_response, true);
-                $response=(object)$response;
-                $elarray=(array)$response;
- 
-               
-                end($elarray[results][resultado]);
-                $fin = key($elarray[results][resultado]); 
- 
-                
-                printr($response);
 
+                curl_setopt($curl, CURLOPT_HEADER, false);
+
+                $data = curl_exec($curl);
+                $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+
+                //var_dump($curl);
+
+                curl_close($curl);
+                //var_dump($data);
+                $response = json_decode($data, true);
+                $preguntas = $response['data'];
+
+                return $preguntas;
+        }
+        
+        //var_dump($data);
+        //var_dump($preguntas[0]['pregunta']);
+       
+        //var_dump($tamaño);
+        
+        function getPreguntas()
+        {
+                $preguntas = conectarUrl();
+                $tamaño = sizeof($preguntas);
+                $preguntasRet = array();
+                
+                for($i=0; $i < $tamaño; $i++)
+                {
+                        //$titulos[$i] = $preguntas[$i]['pregunta'];
+                        $pregunta = array(
+                                'pregunta' => $preguntas[$i]['pregunta'],
+                                'respuestas' => $preguntas[$i]['respuestas']                             
+                              );
+                              $preguntasRet[] = $pregunta;
+                        
+                } 
+                return $preguntasRet;
+        }
+
+        //var_dump(conectarUrl());
+        var_dump(getPreguntas());
+        
 
 ?>
