@@ -44,7 +44,17 @@
                         <a class="nav-link" href="verPreguntas.php">Ver Preguntas</a>
                     </li>
                     <li class="nav-item ml-0 ml-lg-4">
-                        <a class="nav-link btn btn-primary" href="preguntas.php">Crear Pregunta</a>
+                    <?php
+                            session_start();
+
+                            $usuario = $_SESSION['usuario'];
+                            if(isset($usuario))
+                            {
+                                echo '<a class="nav-link btn btn-primary" href="preguntas.php">Crear Pregunta</a>';
+                            }
+                            
+                        ?>
+                       
                     </li>
                 </ul>
             </div>

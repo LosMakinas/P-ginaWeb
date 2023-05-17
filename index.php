@@ -44,7 +44,16 @@
                         <a class="nav-link" href="verPreguntas.php">Ver Preguntas</a>
                     </li>
                     <li class="nav-item ml-0 ml-lg-4">
-                        <a class="nav-link btn btn-primary" href="preguntas.php">Crear Pregunta</a>
+                        <?php
+                            session_start();
+
+                            $usuario = $_SESSION['usuario'];
+                            if(isset($usuario))
+                            {
+                                echo '<a class="nav-link btn btn-primary" href="preguntas.php">Crear Pregunta</a>';
+                            }
+                            
+                        ?>
                     </li>
                 </ul>
             </div>
@@ -60,8 +69,20 @@
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <div class="carousel-caption d-none d-md-block">
-                            <h1 class="carousel-title">Los Makinas: Pagina de preguntas</h1>
-                            <a class="btn btn-primary btn-rounded" href="preguntas.php">Crear Preguntas</a>
+                            <h1 class="carousel-title">Los Makinas: Pagina de preguntas</h1><?php
+                            
+                            //var_dump(session_status());
+                            $usuario = $_SESSION['usuario'];
+                            if(isset($usuario))
+                            {
+                                echo '<a class="btn btn-primary btn-rounded" href="preguntas.php">Crear Preguntas</a>';
+                            }
+                            else
+                            {
+                                echo '<a class="btn btn-primary btn-rounded" href="registro.php">Regístrate</a>';
+                            }
+                            
+                        ?> 
                         </div>
                     </div>
                 </div>
