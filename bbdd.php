@@ -64,6 +64,49 @@
                 return $ejecucion;
   
         }
+
+        function login($usuario, $pass)
+        {
+                $mysqli = connectBBDD();
+
+                $sql = "SELECT idUsuario FROM Usuario WHERE nombreUsuario = ? AND pass = ?";
+
+                $sentencia = $mysqli->prepare($sql);
+                if(!$sentencia)
+                {
+                        echo "Fallo en la preparacion de la sentencia: ".$mysqli->errno;
+                }
+
+                $asignar = $sentencia->bind_param("ss", $usuario, $pass);
+                if(!$asignar)
+                {
+                        echo "Fallo al asignar la sentencia: ".$mysqli->errno;
+                }
+
+                $ejecucion = $sentencia->execute();
+                if(!$ejecucion)
+                {
+                        echo "Fallo en la ejecución de la sentencia: ".$mysqli->errno;
+                }
+
+                $id_usuario = 0;
+
+                $vincular = $sentencia->bind_result($id_usuario);
+                if(!$vincular)
+                {
+                        echo "Fallo al vincular parametros: ".$mysqli->errno;
+                }
+
+
+                if($sentencia->fetch())
+                {
+
+                }
+
+                $mysqli->close();
+
+                return $id_usuario;
+        }
         
         //var_dump($data);
         //var_dump($preguntas[0]['pregunta']);

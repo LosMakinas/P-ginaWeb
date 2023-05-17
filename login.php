@@ -62,7 +62,7 @@
                         <div class="carousel-caption d-none d-md-block">
                             <div id="contForm">
                                 <h1>Login</h1>
-                                <form action="altaUsuarios.php">
+                                <form action="iniciarSesion.php" method="post">
                                 <label for="usuario">Nombre Usuario:</label>
                                 <input type="text" name="usuario" id="">
                                 <label for="password">Palabra Clave:</label>
