@@ -1,7 +1,17 @@
 <?php
 
+        function connectBBDD()
+        {
+                //$mysqli = new mysqli("192.168.0.76", "root", "", "PhotoPlay");
+                $mysqli = new mysqli("127.0.0.1", "root", "", "PhotoPlay");
+                if($mysqli->connect_errno)
+                {
+                        echo "Fallo en la conexión: ".$mysqli->connect_errno;
+                }
+                return $mysqli;
+        }
     
-        function conectarUrl()
+        function getPreguntas()
         {
                 $url = 'http://192.168.0.97:8080/api/preguntasIngles';    
  
@@ -25,12 +35,41 @@
 
                 return $preguntas;
         }
+
+        function insertarUsuario($nombre, $pass, $correo, $admin)
+        {
+                $mysqli = connectBBDD();
+
+                $sql = "INSERT INTO Usuario(nombreUsuario, pass, correo, administrador) VALUES (?, ?, ?, ?)";
+
+                $sentencia = $mysqli->prepare($sql);
+                if(!$sentencia)
+                {
+                        echo "Fallo en la preparacion de la sentencia: ".$mysqli->errno;
+                }
+
+                $asignar = $sentencia->bind_param("sssi", $nombre, $pass, $correo, $admin);
+                if(!$asignar)
+                {
+                         echo "Fallo al asignar la sentencia: ".$mysqli->errno;
+                }
+
+                $ejecucion = $sentencia->execute();
+                if(!$ejecucion)
+                {
+                        echo "Fallo en la ejecución de la sentencia: ".$mysqli->errno;
+                }
+
+                $mysqli->close();
+                return $ejecucion;
+  
+        }
         
         //var_dump($data);
         //var_dump($preguntas[0]['pregunta']);
        
         //var_dump($tamaño);
-        
+        /*
         function getPreguntas()
         {
                 $preguntas = conectarUrl();
@@ -56,6 +95,6 @@
         //$respuesta = $preguntas[0]['respuestas'][0]['respuesta1'];
         //var_dump($respuesta);
         //var_dump(getPreguntas());
-        
+     */   
 
 ?>

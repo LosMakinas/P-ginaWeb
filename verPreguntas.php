@@ -67,7 +67,7 @@
                                     <?php
 
                                         include_once 'bbdd.php';
-                                        $preguntas = conectarUrl(); 
+                                        $preguntas = getPreguntas(); 
                                         $tamaño = sizeof($preguntas);
 
                                         for($i = 0; $i < $tamaño; $i++)

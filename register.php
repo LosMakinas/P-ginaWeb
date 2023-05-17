@@ -62,11 +62,11 @@
                         <div class="carousel-caption d-none d-md-block">
                             <div id="contForm">
                                 <h1>Registro</h1>
-                                    <form action="altaUsuarios.php">
+                                    <form action="altaUsuarios.php" method="post">
                                     <label for="usuario">Nombre Usuario:</label>
                                     <input type="text" name="usuario" id="nomUsu">
                                     <label for="correo">Correo Electronico:</label>
-                                    <input type="text" name="coreo" id="corElec">
+                                    <input type="text" name="correo" id="corElec">
                                     <label for="password">Palabra Clave:</label>
                                     <input type="password" name="password" id="pass1">
                                     <label for="repassword">Repetir Palabra Clave:</label>
