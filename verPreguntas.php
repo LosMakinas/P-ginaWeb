@@ -47,10 +47,13 @@
                     <?php
                             session_start();
 
-                            $usuario = $_SESSION['usuario'];
-                            if(isset($usuario))
+                            if(!empty($_SESSION['usuario']) && isset($_SESSION['usuario']))
                             {
+                                
+                                
                                 echo '<a class="nav-link btn btn-primary" href="preguntas.php">Crear Pregunta</a>';
+                                echo '<a class="nav-link" href="cerrarSesion.php">Cerrar sesión</a>';
+                                
                             }
                             
                         ?>
@@ -132,9 +135,8 @@
                                             echo '<p><b>Dificultad: </b>'.$preguntas[$i]['dificultad'].'</p>';
 
                                             echo '<div class="actions">';
-                                                echo '<button class="btn-favorite">Editar</button>';
-                                                echo '<button class="btn-favorite">Dar de alta</button>';
-                                                echo '<button class="btn-report">Eliminar</button>';
+                                                echo '<button href="modificarPregunta.php" class="btn-favorite">Editar</button>';
+                                                echo '<button href="eliminarPregunta.php" class="btn-report">Eliminar</button>';
                                             echo '</div>';
                                         }
                                         

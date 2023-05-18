@@ -41,16 +41,19 @@
                         <a class="nav-link" href="register.php">Registro</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="preguntas.php">Ver Preguntas</a>
+                        <a class="nav-link" href="verPreguntas.php">Ver Preguntas</a>
                     </li>
                     <li class="nav-item ml-0 ml-lg-4">
                     <?php
                             session_start();
 
-                            $usuario = $_SESSION['usuario'];
-                            if(isset($usuario))
+                            if(!empty($_SESSION['usuario']) && isset($_SESSION['usuario']))
                             {
+                                
+                                
                                 echo '<a class="nav-link btn btn-primary" href="preguntas.php">Crear Pregunta</a>';
+                                echo '<a class="nav-link" href="cerrarSesion.php">Cerrar sesión</a>';
+                                
                             }
                             
                         ?>
