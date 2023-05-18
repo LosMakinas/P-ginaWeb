@@ -36,6 +36,53 @@
                 return $preguntas;
         }
 
+        function insertarPregunta($pregunta)
+        {
+                $url = 'http://192.168.0.97:8080/api/preguntas';
+                
+                
+                
+                $opciones = array(
+                        "http" => array(
+                            "header" => "Content-type: application/json\r\n",
+                            "method" => "POST",
+                            "content" => json_encode($pregunta), # Agregar el contenido definido antes
+                        ),
+                    );
+                    # Preparar petición
+                    $contexto = stream_context_create($opciones);
+                    # Hacerla
+                    $resultado = file_get_contents($url, false, $contexto);
+                    if ($resultado === false) {
+                        echo "Error haciendo petición";
+                        exit;
+                    }
+  
+                    # si no salimos allá arriba, todo va bien
+                    $resultadoJson = json_decode($resultado, true);
+                    $pregunta['imagen'] = "Images/". $resultadoJson['data']['_id'] . $pregunta['imagen'];
+
+                    $opciones = array(
+                        "http" => array(
+                            "header" => "Content-type: application/json\r\n",
+                            "method" => "POST",
+                            "content" => json_encode($pregunta), # Agregar el contenido definido antes
+                        ),
+                    );
+                    # Preparar petición
+                    $contexto = stream_context_create($opciones);
+                    # Hacerla
+                    $resultado = file_get_contents($url, false, $contexto);
+                    if ($resultado === false) {
+                        echo "Error haciendo petición";
+                        exit;
+                    }
+                    
+                    return $resultadoJson['data']['_id'];
+
+                    //echo json_encode($pregunta);
+        }
+
         function insertarUsuario($nombre, $pass, $correo, $admin)
         {
                 $mysqli = connectBBDD();
@@ -108,36 +155,9 @@
                 return $id_usuario;
         }
         
-        //var_dump($data);
-        //var_dump($preguntas[0]['pregunta']);
-       
-        //var_dump($tamaño);
-        /*
-        function getPreguntas()
-        {
-                $preguntas = conectarUrl();
-                $tamaño = sizeof($preguntas);
-                $preguntasRet = array();
-                
-                for($i=0; $i < $tamaño; $i++)
-                {
-                        //$titulos[$i] = $preguntas[$i]['pregunta'];
-                        $pregunta = array(
-                                'pregunta' => $preguntas[$i]['pregunta'],
-                                'respuestas' => $preguntas[$i]['respuestas']                             
-                              );
-                              $preguntasRet[] = $pregunta;
-                        
-                } 
-                return $preguntasRet;
-        }
-
-        $preguntas = conectarUrl();
-        //var_dump(conectarUrl());
-
-        //$respuesta = $preguntas[0]['respuestas'][0]['respuesta1'];
-        //var_dump($respuesta);
-        //var_dump(getPreguntas());
-     */   
+        $preguntas = getPreguntas();
+        //var_dump($preguntas);
+        //var_dump($preguntas[0]['respuesta1'][0]['correcta']);
+        //var_dump($preguntas[0]['respuesta1']['respuesta']);
 
 ?>

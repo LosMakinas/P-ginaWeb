@@ -46,12 +46,17 @@
                     <li class="nav-item ml-0 ml-lg-4">
                         <?php
                             session_start();
-
-                            $usuario = $_SESSION['usuario'];
-                            if(isset($usuario))
+                            
+                            if(!empty($_SESSION['usuario']) && isset($_SESSION['usuario']))
                             {
+                                
+                                
                                 echo '<a class="nav-link btn btn-primary" href="preguntas.php">Crear Pregunta</a>';
+                                echo '<a class="nav-link" href="cerrarSesion.php">Cerrar sesión</a>';
+                                
                             }
+                            //$usuario = $_SESSION['usuario'];
+                            
                             
                         ?>
                     </li>
@@ -72,14 +77,15 @@
                             <h1 class="carousel-title">Los Makinas: Pagina de preguntas</h1><?php
                             
                             //var_dump(session_status());
-                            $usuario = $_SESSION['usuario'];
-                            if(isset($usuario))
+                            
+                            if(!empty($_SESSION['usuario']) && isset($_SESSION['usuario']))
                             {
                                 echo '<a class="btn btn-primary btn-rounded" href="preguntas.php">Crear Preguntas</a>';
+                                
                             }
                             else
                             {
-                                echo '<a class="btn btn-primary btn-rounded" href="registro.php">Regístrate</a>';
+                                echo '<a class="btn btn-primary btn-rounded" href="register.php">Regístrate</a>';
                             }
                             
                         ?> 

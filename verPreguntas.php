@@ -84,9 +84,47 @@
                                         {
                                             echo '<h3>'.$preguntas[$i]['pregunta'].'</h3>';
                                             echo '<h4>'.$preguntas[$i]['descripcion'].'</h4>';
+                                            /*
                                             for($j = 0; $j < 4; $j++)
                                             {
+                                                if($preguntas[$i]['respuestas'][$j]['correcta'])
+                                                {
+                                                    echo '<p>Respuesta '.($j+1).': '.$preguntas[$i]['respuestas'][$j]['respuesta'.($j+1)].' [Correcta]</p>';
+                                                }
                                                 echo '<p>Respuesta '.($j+1).': '.$preguntas[$i]['respuestas'][$j]['respuesta'.($j+1)].'</p>';
+                                            }
+                                            */
+                                            
+                                            if($preguntas[$i]['respuesta1']['correcta'])
+                                            {
+                                                echo '<p>Respuesta 1: '.$preguntas[$i]['respuesta1']['respuesta'].' [Correcta]</p>';
+                                            }
+                                            else{
+                                                echo '<p>Respuesta 1: '.$preguntas[$i]['respuesta1']['respuesta'].'</p>';
+                                            }
+
+                                            if($preguntas[$i]['respuesta2']['correcta'])
+                                            {
+                                                echo '<p>Respuesta 2: '.$preguntas[$i]['respuesta2']['respuesta'].' [Correcta]</p>';
+                                            }
+                                            else{
+                                                echo '<p>Respuesta 2: '.$preguntas[$i]['respuesta2']['respuesta'].'</p>';
+                                            }
+
+                                            if($preguntas[$i]['respuesta3']['correcta'])
+                                            {
+                                                echo '<p>Respuesta 3: '.$preguntas[$i]['respuesta3']['respuesta'].' [Correcta]</p>';
+                                            }
+                                            else{
+                                                echo '<p>Respuesta 3: '.$preguntas[$i]['respuesta3']['respuesta'].'</p>';
+                                            }
+
+                                            if($preguntas[$i]['respuesta4']['correcta'])
+                                            {
+                                                echo '<p>Respuesta 4: '.$preguntas[$i]['respuesta4']['respuesta'].' [Correcta]</p>';
+                                            }
+                                            else{
+                                                echo '<p>Respuesta 4: '.$preguntas[$i]['respuesta4']['respuesta'].'</p>';
                                             }
 
                                             echo '<p><b>Segundos para resolverlo: </b>'.$preguntas[$i]['tiempo'].'</p>';

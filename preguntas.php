@@ -62,7 +62,7 @@
                         <div class="carousel-caption d-none d-md-block">
                             <div id = "contenido">
                                 <h2 id="titulo">Agrega una nueva pregunta</h2>
-                                <form>
+                                <form action="insertarPregunta.php" method="post" enctype="multipart/form-data">
                                   <label for="pregunta">Pregunta:</label>
                                   <input type="text" id="pregunta" class="pregunta" name="pregunta">
                                   <label for="respuesta">Respuesta 1:</label>
@@ -73,9 +73,11 @@
                                   <textarea id="respuesta3" class="pregunta" name="respuesta3"></textarea>
                                   <label for="respuesta">Respuesta 4:</label>
                                   <textarea id="respuesta4" class="pregunta" name="respuesta4"></textarea>
+                                  <label for="descripcion">Descripción:</label>
+                                  <textarea id="descripcion" class="pregunta" name="descripcion"></textarea>
                                   <div id="imagen">
                                     <label for="image">Imagen: </label>
-                                    <input type="file" title=" " id="archivoPreg">
+                                    <input type="file" title=" " id="archivoPreg" name= "imagen">
                                   </div>
                                   <div id="temporizador">
                                   <label for="tiempo">Segundos para resolver la pregunta:</label>
@@ -95,19 +97,19 @@
                                     <select name="tematica" id="tematica" >
                                       <option value="-1">Seleccione un campo</option>
                                       <option value="FOL">FOL</option>
-                                      <option value="Ingles">Ingles</option>
+                                      <option value="ingles">Ingles</option>
                                     </select>
                                   </div>
                                   <label for="radios" id="labelRadios">Cual es la correcta:</label>
                                   <div id="radio">
                                   <label for="pregunta1">Pregunta 1:</label>
-                                  <input type="radio" id="radio1" class = "radioPreg" name="preguntaCor" value="">
+                                  <input type="radio" id="radio1" class = "radioPreg" name="preguntaCor" value="1">
                                   <label for="pregunta2">Pregunta 2:</label>
-                                  <input type="radio" id="radio2" class = "radioPreg" name="preguntaCor" value="">
+                                  <input type="radio" id="radio2" class = "radioPreg" name="preguntaCor" value="2">
                                   <label for="pregunta3">Pregunta 3:</label>
-                                  <input type="radio" id="radio3" class = "radioPreg" name="preguntaCor" value="">
+                                  <input type="radio" id="radio3" class = "radioPreg" name="preguntaCor" value="3">
                                   <label for="pregunta4">Pregunta 4:</label>
-                                  <input type="radio" id="radio4" class = "radioPreg" name="preguntaCor" value="">
+                                  <input type="radio" id="radio4" class = "radioPreg" name="preguntaCor" value="4">
                                   </div>
                                   <p id="error">Error/es: </p>
                                   <input type="submit" value="Agregar pregunta" id="enviarPreg">
