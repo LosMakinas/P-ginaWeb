@@ -102,13 +102,13 @@
                                   </div>
                                   <label for="radios" id="labelRadios">Cual es la correcta:</label>
                                   <div id="radio">
-                                  <label for="pregunta1">Pregunta 1:</label>
+                                  <label for="pregunta1">Respuesta 1:</label>
                                   <input type="radio" id="radio1" class = "radioPreg" name="preguntaCor" value="1">
-                                  <label for="pregunta2">Pregunta 2:</label>
+                                  <label for="pregunta2">Respuesta 2:</label>
                                   <input type="radio" id="radio2" class = "radioPreg" name="preguntaCor" value="2">
-                                  <label for="pregunta3">Pregunta 3:</label>
+                                  <label for="pregunta3">Respuesta 3:</label>
                                   <input type="radio" id="radio3" class = "radioPreg" name="preguntaCor" value="3">
-                                  <label for="pregunta4">Pregunta 4:</label>
+                                  <label for="pregunta4">Respuesta 4:</label>
                                   <input type="radio" id="radio4" class = "radioPreg" name="preguntaCor" value="4">
                                   </div>
                                   <p id="error">Error/es: </p>

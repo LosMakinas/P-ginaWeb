@@ -133,14 +133,25 @@
                                             echo '<p><b>Segundos para resolverlo: </b>'.$preguntas[$i]['tiempo'].'</p>';
                                             echo '<p><b>Tema: </b>'.$preguntas[$i]['tematica'].'</p>';
                                             echo '<p><b>Dificultad: </b>'.$preguntas[$i]['dificultad'].'</p>';
+                                            
+                                            if(!empty($_SESSION['usuario']) && isset($_SESSION['usuario']))
+                                            {
+                                
+                                
+                                                echo '<div class="actions">';
+                                                    echo '<a href="modificarPregunta.php?idPregunta='.$preguntas[$i]['_id'].'"><button class="btn-favorite">editar</button></a>';
+                                                    echo '<a href="eliminarPregunta.php?idPregunta='.$preguntas[$i]['_id'].'"><button class="btn-report">eliminar</button></a>';                                                
+                                                echo '</div>';
+                                
+                                            }
 
-                                            echo '<div class="actions">';
-                                                echo '<button href="modificarPregunta.php" class="btn-favorite">Editar</button>';
-                                                echo '<button href="eliminarPregunta.php" class="btn-report">Eliminar</button>';
-                                            echo '</div>';
+                                            
+                                            
                                         }
                                         
                                         ?>
+                                    
+                                        
                                   </li>
                                   
                                 </ul>

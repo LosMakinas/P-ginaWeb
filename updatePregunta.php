@@ -29,7 +29,7 @@
         $dificultad = 3;
     }
 
-    $ubicacionDeseada = basename($_FILES['imagen']['name']);
+    
     
 
     $pregunta = [
@@ -53,7 +53,6 @@
 	    "dificultad" => $dificultad,
 	    "tiempo" => $tiempo,
         "tematica" => $tematica,
-	    "imagen" => $ubicacionDeseada,
         "descripcion" => $descripcion
 	
     ];
@@ -77,23 +76,19 @@
     
 
     //var_dump($pregunta);
+
+    
     
     include 'bbdd.php';
 
-    $funciona = insertarPregunta($pregunta);
-
-    $ubicacionDeseada = "Images/". $funciona . basename($_FILES['imagen']['name']);
-
-    if(!empty($_FILES['imagen']['name']))
-    {
-        move_uploaded_file($_FILES['imagen']['tmp_name'], $ubicacionDeseada);
-    }
+    $funciona = modificarPregunta($pregunta, $_POST['id']);
 
     
-    if($funciona)
-    {
-        header("location: index.php");
-    }
+    
+    header("location: index.php");
+    
+    
+    
     
   
 
