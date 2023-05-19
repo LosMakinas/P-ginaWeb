@@ -174,7 +174,7 @@
                                     </select>
                                     
                                   </div>
-                                  <label for="radios" id="labelRadios">Cual es la correcta:</label>
+                                  <label for="radios" id="labelRadios">Cual es la correcta: </label>
                                   <div id="radio">
                                   
                                   <?php
@@ -182,52 +182,52 @@
                                     $correcta=0;
                                     if($pregunta['respuesta1']['correcta'])
                                     {
-                                        echo '<label for="pregunta1">Respuesta 1:</label>';
+                                        echo '<label for="pregunta1">Respuesta 1: </label>';
                                         echo '<input type="radio" id="radio1" class = "radioPreg" name="preguntaCor" value="1" checked>';                                        
                                     }
                                     else
                                     {
-                                        echo '<label for="pregunta1">Respuesta 1:</label>';
+                                        echo '<label for="pregunta1">Respuesta 1: </label>';
                                         echo '<input type="radio" id="radio1" class = "radioPreg" name="preguntaCor" value="1">';     
                                     }
 
                                     if($pregunta['respuesta2']['correcta'])
                                     {
-                                        echo '<label for="pregunta2">Respuesta 2:</label>';
+                                        echo '<label for="pregunta2">Respuesta 2: </label>';
                                         echo '<input type="radio" id="radio2" class = "radioPreg" name="preguntaCor" value="2" checked>';                                        
                                     }
                                     else
                                     {
-                                        echo '<label for="pregunta2">Respuesta 2:</label>';
+                                        echo '<label for="pregunta2">Respuesta 2: </label>';
                                         echo '<input type="radio" id="radio2" class = "radioPreg" name="preguntaCor" value="2">';     
                                     }
 
                                     if($pregunta['respuesta3']['correcta'])
                                     {
-                                        echo '<label for="pregunta3">Respuesta 3:</label>';
+                                        echo '<label for="pregunta3">Respuesta 3: </label>';
                                         echo '<input type="radio" id="radio3" class = "radioPreg" name="preguntaCor" value="3" checked>';                                        
                                     }
                                     else
                                     {
-                                        echo '<label for="pregunta3">Respuesta 3:</label>';
+                                        echo '<label for="pregunta3">Respuesta 3: </label>';
                                         echo '<input type="radio" id="radio3" class = "radioPreg" name="preguntaCor" value="3">';     
                                     }
 
                                     if($pregunta['respuesta4']['correcta'])
                                     {
-                                        echo '<label for="pregunta4">Respuesta 4:</label>';
+                                        echo '<label for="pregunta4">Respuesta 4: </label>';
                                         echo '<input type="radio" id="radio4" class = "radioPreg" name="preguntaCor" value="4" checked>';                                        
                                     }
                                     else
                                     {
-                                        echo '<label for="pregunta4">Respuesta 4:</label>';
+                                        echo '<label for="pregunta4">Respuesta 4: </label>';
                                         echo '<input type="radio" id="radio4" class = "radioPreg" name="preguntaCor" value="4">';     
                                     }
 
                                   ?>
                                   </div>
                                   <p id="error">Error/es: </p>
-                                  <input type="submit" value="Agregar pregunta" id="enviarPreg">
+                                  <input type="submit" value="Modificar pregunta" id="enviarPreg">
                                 </form>
                                 </div>
                         </div>

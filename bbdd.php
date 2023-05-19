@@ -134,6 +134,31 @@
 
         }
 
+        function eliminarPregunta($id)
+        {
+
+                $url = 'http://192.168.0.97:8080/api/preguntas/'.$id;
+
+                $opciones = array(
+                        "http" => array(
+                            "header" => "Content-type: application/json\r\n",
+                            "method" => "DELETE",
+                            
+                        ),
+                    );
+                    # Preparar petición
+                    $contexto = stream_context_create($opciones);
+                    # Hacerla
+                    $resultado = file_get_contents($url, false, $contexto);
+                    if ($resultado === false) {
+                        echo "Error haciendo petición";
+                        exit;
+                    }
+
+                    var_dump($resultado);
+
+        }
+
         function insertarUsuario($nombre, $pass, $correo, $admin)
         {
                 $mysqli = connectBBDD();

@@ -89,7 +89,6 @@
         move_uploaded_file($_FILES['imagen']['tmp_name'], $ubicacionDeseada);
     }
 
-    
     if($funciona)
     {
         header("location: index.php");

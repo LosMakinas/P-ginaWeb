@@ -81,7 +81,7 @@
                                 <input type="text" name="usuario" id="">
                                 <label for="password">Palabra Clave:</label>
                                 <input type="password" name="password" id="">
-                                <input type="submit" value="Crear Usuario">
+                                <input type="submit" value="Iniciar sesión">
                             </form>
                             </div>
                         </div>
