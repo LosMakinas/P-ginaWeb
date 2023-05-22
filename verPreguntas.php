@@ -140,7 +140,8 @@
                                 
                                                 echo '<div class="actions">';
                                                     echo '<a href="modificarPregunta.php?idPregunta='.$preguntas[$i]['_id'].'"><button class="btn-favorite">editar</button></a>';
-                                                    echo '<a href="eliminarPregunta.php?idPregunta='.$preguntas[$i]['_id'].'"><button class="btn-report">eliminar</button></a>';                                                
+                                                    echo '<a href="eliminarPregunta.php?idPregunta='.$preguntas[$i]['_id'].'"><button class="btn-report">eliminar</button></a>';
+                                                    echo '<a href="validarPregunta.php?idPregunta='.$preguntas[$i]['_id'].'"><button class="btn-report">validar</button></a>';                                                
                                                 echo '</div>';
                                 
                                             }

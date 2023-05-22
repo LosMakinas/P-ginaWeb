@@ -54,7 +54,8 @@
 	    "tiempo" => $tiempo,
         "tematica" => $tematica,
 	    "imagen" => $ubicacionDeseada,
-        "descripcion" => $descripcion
+        "descripcion" => $descripcion,
+        "validada" => false
 	
     ];
 

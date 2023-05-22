@@ -11,7 +11,7 @@
                 return $mysqli;
         }
     
-        function getPreguntas()
+        function getPreguntasValidadas()
         {
                 $url = 'http://192.168.0.97:8080/api/preguntasIngles';    
  
@@ -34,6 +34,11 @@
                 $preguntas = $response['data'];
 
                 return $preguntas;
+        }
+
+        function getPreguntasNoValidadas()
+        {
+                
         }
 
         function insertarPregunta($pregunta)
