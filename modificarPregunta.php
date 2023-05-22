@@ -252,6 +252,6 @@
     <!-- Ollie js -->
     <script src="assets/js/Ollie.js"></script>
     <!--Preguntas-->
-    <!--<script src="js/preguntas.js"></script>--> 
+    <script src="js/editarPreguntas.js"></script>
 </body>
 </html>

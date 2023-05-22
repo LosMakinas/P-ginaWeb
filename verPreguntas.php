@@ -80,7 +80,7 @@
                                     <?php
 
                                         include_once 'bbdd.php';
-                                        $preguntas = getPreguntas(); 
+                                        $preguntas = getPreguntasValidadas(); 
                                         $tamaño = sizeof($preguntas);
 
                                         for($i = 0; $i < $tamaño; $i++)
