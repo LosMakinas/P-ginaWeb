@@ -55,6 +55,11 @@
                                 
                                 
                             }
+
+                            $id = $_SESSION['idUsuario'];
+                            include 'bbdd.php';
+                            $usuario = getUsuarioId($id);
+
                             
                         ?>
                     </li>
@@ -63,8 +68,8 @@
                         {
                             
                             echo '<a class="nav-link" href="cerrarSesion.php">Cerrar sesión</a>';
-                            echo '<a class="nav-link" href="modificarUsuario.php?idUsuario='.$_SESSION['idUsuario'].'">Hola '.$_SESSION['usuario'].'</a>';
-                            echo '<a class="nav-link" href="bajaUsuario.php?idUsuario='.$_SESSION['idUsuario'].'">Darse de baja</a>';
+                            echo '<a class="nav-link" href="modificarUsuario.php">Hola '.$_SESSION['usuario'].'</a>';
+                            echo '<a class="nav-link" href="bajaUsuario.php">Darse de baja</a>';
                             
                         }
 
@@ -84,17 +89,29 @@
                     <div class="carousel-item active">
                         <div class="carousel-caption d-none d-md-block">
                             <div id="contForm">
-                                <h1>Registro</h1>
-                                    <form action="altaUsuarios.php" method="post">
+                                
+                                    <form action="updateUsuario.php" method="post">
                                     <label for="usuario">Nombre Usuario:</label>
-                                    <input type="text" name="usuario" id="nomUsu">
+                                    <?php
+                                    
+                                        echo '<input type="text" name="usuario" id="nomUsu" value="'.$usuario['nombreUsuario'].'">';
+                                    ?>
                                     <label for="correo">Correo Electronico:</label>
-                                    <input type="text" name="correo" id="corElec">
+                                    <?php
+                                    
+                                        echo '<input type="text" name="correo" id="corElec" value="'.$usuario['correo'].'">';
+                                    ?>
                                     <label for="password">Palabra Clave:</label>
-                                    <input type="password" name="password" id="pass1">
+                                    <?php
+                                    
+                                        echo '<input type="password" name="password" id="pass1" value="'.$usuario['pass'].'">';
+                                    ?>
                                     <label for="repassword">Repetir Palabra Clave:</label>
-                                    <input type="password" name="repassword" id="pass2">
-                                    <input type="submit" value="Crear Usuario" id="registrar">
+                                    <?php
+                                    
+                                        echo '<input type="password" name="repassword" id="pass2" value="'.$usuario['pass'].'">';
+                                    ?>
+                                    <input type="submit" value="Modificar Usuario" id="registrar">
                                 </form>
                                 <p id="error">Error</p>
                                 </div>

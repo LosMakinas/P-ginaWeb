@@ -52,13 +52,24 @@
                                 
                                 
                                 echo '<a class="nav-link btn btn-primary" href="preguntas.php">Crear Pregunta</a>';
-                                echo '<a class="nav-link" href="cerrarSesion.php">Cerrar sesión</a>';
+                                
                                 
                             }
                             
                         ?>
                        
-                    </li>
+                       </li>
+                        <?php
+                            if(!empty($_SESSION['usuario']) && isset($_SESSION['usuario']))
+                            {
+                            
+                                echo '<a class="nav-link" href="cerrarSesion.php">Cerrar sesión</a>';
+                                echo '<a class="nav-link" href="modificarUsuario.php">Hola '.$_SESSION['usuario'].'</a>';
+                                echo '<a class="nav-link" href="bajaUsuario.php">Darse de baja</a>';
+                            
+                            }
+
+                    ?>
                 </ul>
             </div>
         </div>
@@ -80,7 +91,7 @@
                                     <?php
 
                                         include_once 'bbdd.php';
-                                        $preguntas = getPreguntas(); 
+                                        $preguntas = getPreguntasValidadas(); 
                                         $tamaño = sizeof($preguntas);
 
                                         for($i = 0; $i < $tamaño; $i++)
@@ -136,13 +147,34 @@
                                             
                                             if(!empty($_SESSION['usuario']) && isset($_SESSION['usuario']))
                                             {
-                                
-                                
-                                                echo '<div class="actions">';
-                                                    echo '<a href="modificarPregunta.php?idPregunta='.$preguntas[$i]['_id'].'"><button class="btn-favorite">editar</button></a>';
-                                                    echo '<a href="eliminarPregunta.php?idPregunta='.$preguntas[$i]['_id'].'"><button class="btn-report">eliminar</button></a>';
-                                                    echo '<a href="validarPregunta.php?idPregunta='.$preguntas[$i]['_id'].'"><button class="btn-report">validar</button></a>';                                                
-                                                echo '</div>';
+                                                
+                                                $usuario = getUsuarioId($_SESSION['idUsuario']);
+
+                                                if(!$preguntas[$i]['validada'])
+                                                {
+                                                    echo '<div class="actions">';
+                                                        echo '<a href="modificarPregunta.php?idPregunta='.$preguntas[$i]['_id'].'"><button class="btn-favorite">editar</button></a>';
+                                                        echo '<a href="eliminarPregunta.php?idPregunta='.$preguntas[$i]['_id'].'"><button class="btn-report">eliminar</button></a>';
+
+                                                        if ($usuario['administrador'])
+                                                        {
+                                                            echo '<a href="validarPregunta.php?idPregunta='.$preguntas[$i]['_id'].'"><button class="btn-report">validar</button></a>';
+                                                        }
+                                                                                                    
+                                                    echo '</div>';
+                                                }
+                                                
+                                                else
+                                                {
+                                                    if ($usuario['administrador'])
+                                                    {
+                                                        echo '<div class="actions">';
+                                                            echo '<a href="modificarPregunta.php?idPregunta='.$preguntas[$i]['_id'].'"><button class="btn-favorite">editar</button></a>';
+                                                            echo '<a href="eliminarPregunta.php?idPregunta='.$preguntas[$i]['_id'].'"><button class="btn-report">eliminar</button></a>';                                               
+                                                        echo '</div>';
+                                                    }
+                                                }
+                                                
                                 
                                             }
 

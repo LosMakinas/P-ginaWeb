@@ -54,12 +54,23 @@
                                 
                                 
                                 echo '<a class="nav-link btn btn-primary" href="preguntas.php">Crear Pregunta</a>';
-                                echo '<a class="nav-link" href="cerrarSesion.php">Cerrar sesión</a>';
+                                
                                 
                             }
                             
                         ?>
                     </li>
+                    <?php
+                        if(!empty($_SESSION['usuario']) && isset($_SESSION['usuario']))
+                        {
+                            
+                            echo '<a class="nav-link" href="cerrarSesion.php">Cerrar sesión</a>';
+                            echo '<a class="nav-link" href="modificarUsuario.php?idUsuario='.$_SESSION['idUsuario'].'">Hola '.$_SESSION['usuario'].'</a>';
+                            echo '<a class="nav-link" href="bajaUsuario.php?idUsuario='.$_SESSION['idUsuario'].'">Darse de baja</a>';
+                            
+                        }
+
+                    ?>
                 </ul>
             </div>
         </div>
