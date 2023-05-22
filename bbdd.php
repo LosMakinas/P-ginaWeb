@@ -13,7 +13,7 @@
     
         function getPreguntasValidadas()
         {
-                $url = 'http://192.168.0.97:8080/api/preguntasIngles';    
+                $url = 'http://192.168.0.97:8080/api/preguntas';    
  
                 $curl = curl_init();
 
@@ -38,7 +38,7 @@
 
         function getPreguntasNoValidadas()
         {
-                
+
         }
 
         function insertarPregunta($pregunta)
@@ -67,18 +67,22 @@
                     $resultadoJson = json_decode($resultado, true);
                     $pregunta['imagen'] = "Images/". $resultadoJson['data']['_id'] . $pregunta['imagen'];
 
-                    $opciones = array(
+
+                    $id = $resultadoJson['data']['_id'];
+                    $urlU = 'http://192.168.0.97:8080/api/preguntas/'.$id;
+                    
+                    $opcionesU = array(
                         "http" => array(
                             "header" => "Content-type: application/json\r\n",
-                            "method" => "POST",
+                            "method" => "PUT",
                             "content" => json_encode($pregunta), # Agregar el contenido definido antes
                         ),
                     );
                     # Preparar petición
-                    $contexto = stream_context_create($opciones);
+                    $contextoU = stream_context_create($opcionesU);
                     # Hacerla
-                    $resultado = file_get_contents($url, false, $contexto);
-                    if ($resultado === false) {
+                    $resultadoU = file_get_contents($urlU, false, $contextoU);
+                    if ($resultadoU === false) {
                         echo "Error haciendo petición";
                         exit;
                     }
@@ -235,6 +239,120 @@
 
                 return $id_usuario;
         }
+
+        function getUsuarioId($id)
+        {
+                $mysqli = connectBBDD();
+
+                $sql = "SELECT nombreUsuario, pass, correo, administrador FROM Usuario WHERE idUsuario = ?";
+
+                $sentencia = $mysqli->prepare($sql);
+                if(!$sentencia)
+                {
+                        echo "Fallo en la preparacion de la sentencia: ".$mysqli->errno;
+                }
+
+                $asignar = $sentencia->bind_param("i", $id);
+                if(!$asignar)
+                {
+                        echo "Fallo al asignar la sentencia: ".$mysqli->errno;
+                }
+
+                $ejecucion = $sentencia->execute();
+                if(!$ejecucion)
+                {
+                        echo "Fallo en la ejecución de la sentencia: ".$mysqli->errno;
+                }
+
+                $nombre = "";
+                $pass = "";
+                $correo = "";
+                $administrador = 0;
+
+                $vincular = $sentencia->bind_result($nombre, $pass, $correo, $administrador);
+                if(!$vincular)
+                {
+                        echo "Fallo al vincular parametros: ".$mysqli->errno;
+                }
+
+                
+                if($sentencia->fetch())
+                {
+                        $usuario = array(
+                                'nombreUsuario' => $nombre,
+                                'pass' => $pass,
+                                'correo' => $correo,
+                                'administrador' => $administrador
+                        );
+                        
+                }
+
+                $mysqli->close();
+
+                return $usuario;
+        }
+
+        function modificarUsuario($id, $usuario, $correo, $pass)
+        {
+                $mysqli = connectBBDD();
+
+                $sql = "UPDATE Usuario SET nombreUsuario = ?, correo = ?, pass = ? WHERE idUsuario = ?";
+
+                $sentencia = $mysqli->prepare($sql);
+                if(!$sentencia)
+                {
+                        echo "Fallo en la preparacion de la sentencia: ".$mysqli->errno;
+                }
+
+                $asignar = $sentencia->bind_param("sssi", $usuario, $correo, $pass, $id);
+                if(!$asignar)
+                {
+                        echo "Fallo al asignar la sentencia: ".$mysqli->errno;
+                }
+
+                $ejecucion = $sentencia->execute();
+                if(!$ejecucion)
+                {
+                        echo "Fallo en la ejecución de la sentencia: ".$mysqli->errno;
+                }
+
+                $mysqli->close();
+                return $ejecucion;
+      
+        }
+
+        function eliminarUsuario($id)
+        {
+                $mysqli = connectBBDD();
+
+                $sql = "DELETE FROM Usuario WHERE idUsuario = ?";
+
+                $sentencia = $mysqli->prepare($sql);
+                if(!$sentencia)
+                {
+                        echo "Fallo en la preparacion de la sentencia: ".$mysqli->errno;
+                }
+
+                $asignar = $sentencia->bind_param("i", $id);
+                if(!$asignar)
+                {
+                        echo "Fallo al asignar la sentencia: ".$mysqli->errno;
+                }
+
+                $ejecucion = $sentencia->execute();
+                if(!$ejecucion)
+                {
+                        echo "Fallo en la ejecución de la sentencia: ".$mysqli->errno;
+                }
+
+                $mysqli->close();
+                return $ejecucion;
+
+
+                
+        }
+
+
         
         //$preguntas = getPreguntas();
         //var_dump($preguntas);

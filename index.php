@@ -40,9 +40,10 @@
                     <li class="nav-item">
                         <a class="nav-link" href="register.php">Registro</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item">                        
                         <a class="nav-link" href="verPreguntas.php">Ver Preguntas</a>
                     </li>
+                    
                     <li class="nav-item ml-0 ml-lg-4">
                         <?php
                             session_start();
@@ -52,7 +53,7 @@
                                 
                                 
                                 echo '<a class="nav-link btn btn-primary" href="preguntas.php">Crear Pregunta</a>';
-                                echo '<a class="nav-link" href="cerrarSesion.php">Cerrar sesión</a>';
+                                
                                 
                             }
                             //$usuario = $_SESSION['usuario'];
@@ -60,6 +61,17 @@
                             
                         ?>
                     </li>
+                    <?php
+                        if(!empty($_SESSION['usuario']) && isset($_SESSION['usuario']))
+                        {
+                            
+                            echo '<a class="nav-link" href="cerrarSesion.php">Cerrar sesión</a>';
+                            echo '<a class="nav-link" href="modificarUsuario.php?idUsuario='.$_SESSION['idUsuario'].'">Hola '.$_SESSION['usuario'].'</a>';
+                            echo '<a class="nav-link" href="bajaUsuario.php?idUsuario='.$_SESSION['idUsuario'].'">Darse de baja</a>';
+                            
+                        }
+
+                    ?>
                 </ul>
             </div>
         </div>
