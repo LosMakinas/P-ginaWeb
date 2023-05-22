@@ -30,8 +30,8 @@
 
     if($function == "checkUsuario") 
     {
-        $usu = checkUsuario($_POST['nombre_usuario']);
-        $usuJson = json_encode($usu, JSON_UNESCAPED_UNICODE);
-        echo $usuJson;
+        $idUsu = checkUsuario($_POST['nombre_usuario']);
+        $idUsuJson = json_encode($idUsu, JSON_UNESCAPED_UNICODE);
+        echo $idUsuJson;
     }
 ?>
