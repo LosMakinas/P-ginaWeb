@@ -120,6 +120,6 @@
     <!-- Ollie js -->
     <script src="assets/js/Ollie.js"></script>
     <!--Registro-->
-    <script src="js/registro.js"></script>
+    <script src="js/registro.js" type="text/javascript"></script>
 </body>
 </html>

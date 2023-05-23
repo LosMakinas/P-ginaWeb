@@ -112,6 +112,7 @@
                                         echo '<input type="password" name="repassword" id="pass2" value="'.$usuario['pass'].'">';
                                     ?>
                                     <input type="submit" value="Modificar Usuario" id="registrar">
+                                    <input type="hidden" id="idUsu" value=<?php echo $id;?>>
                                 </form>
                                 <p id="error">Error</p>
                                 </div>
@@ -137,6 +138,6 @@
     <!-- Ollie js -->
     <script src="assets/js/Ollie.js"></script>
     <!--Registro-->
-    <script src="js/registro.js"></script>
+    <script src="js/modificar.js" type="text/javascript"></script>
 </body>
 </html>

@@ -1,7 +1,9 @@
 $(document).ready(function () {
 
     //let arrayElems = [$("#nomUsu"), $("#corElec"), $("#pass1"), $("#pass2")];
-    let arrayBools = [boolUsu = false, boolCor = false, boolPass = false, boolReUser = true];
+    let arrayBools = [boolUsu = true, boolCor = true, boolPass = true, boolReUser = true];
+
+    let idUsu = $("#idUsu").val();
 
     $("#corElec").keyup(checkCor).change(checkCor);
 
@@ -13,11 +15,17 @@ $(document).ready(function () {
 
     function checkPass() {
         arrayBools[2] = $("#pass1").val() == $("#pass2").val();
+        if ($(this).val().length <= 0) {
+            arrayBools[2] = false;
+        }
     }
 
     function checkCor() {
         var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
         arrayBools[1] = emailReg.test($(this).val());
+        if ($(this).val().length <= 0) {
+            arrayBools[1] = false;
+        }
     }
 
     function checkUsu() {
@@ -33,12 +41,16 @@ $(document).ready(function () {
             data:{nombre_usuario: $("#nomUsu").val(), function:"checkUsuario"},
             url:'http://localhost/gitPaginaReto/P-ginaWeb/servicios.php',
             type:'post',
-            success:function(response){
-                //console.log(response == 0);
+            success:function(response) {
+                console.log(idUsu);
                 //var idUsuarios = $.parseJSON(response);
-                if(response > 0){
-                    arrayBools[3] = false;
-                } else if(response == 0){
+                if (response > 0) {
+                    if (idUsu == response) {
+                        arrayBools[3] = true;
+                    } else {
+                        arrayBools[3] = false;
+                    }
+                } else {
                     arrayBools[3] = true;
                 }
                 
@@ -47,7 +59,7 @@ $(document).ready(function () {
                 console.log(error);
             }
         }).then(function () {
-            console.log("usu");
+            //console.log("usu");
             for (let index = 0; index <= arrayBools.length; index++) {
                 //console.log({"usu": boolUsu, "pass": boolPass, "correo": boolCor, "indice" : index});
 
@@ -83,7 +95,7 @@ $(document).ready(function () {
         });
         
     } else {
-        console.log("no usu");
+        //console.log("no usu");
         for (let index = 0; index <= arrayBools.length; index++) {
             //console.log({"usu": boolUsu, "pass": boolPass, "correo": boolCor, "indice" : index});
             

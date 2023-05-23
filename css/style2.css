@@ -103,10 +103,13 @@ input[type="number"]
 
 #error
 {
+    margin: 10px;
+    padding: 5px;
+    background-color: beige;
     display: none;
     color: red;
     font-size: larger;
-    border: 1px solid red;
+    border: 2px solid red;
     padding: 5px;
 }
 

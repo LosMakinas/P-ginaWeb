@@ -20,37 +20,37 @@ $(document).ready(function()
         if (!boolTextFiled) {
             $(".pregunta").css({backgroundColor: 'red'});
             $("#error").html($("#error").html() + "Preguntas o respuestas invalidas. ");
-            $("#error").show();
+            $("#error").fadeIn();
         }
 
         if (!boolSegs) {
             $("#tiempo").css({backgroundColor: 'red'});
             $("#error").text($("#error").html() + "Tiempo invalido. ");
-            $("#error").show();
+            $("#error").fadeIn();
         }
 
         if (!boolDropdown) {
             $("#dificultades").css({backgroundColor: 'red'});
             $("#error").text($("#error").html() + "Seleccione una dificultad. ");
-            $("#error").show();
+            $("#error").fadeIn();
         }
 
         if (!boolTem) {
             $("#tematica").css({backgroundColor: 'red'});
             $("#error").text($("#error").html() + "Seleccione una tematica. ");
-            $("#error").show();
+            $("#error").fadeIn();
         }
 
         if (!boolRadio) {
             $(".radioPreg").css({backgroundColor: 'red'});
             $("#error").text($("#error").html() + "Seleccione una respuesta correcta. ");
-            $("#error").show();
+            $("#error").fadeIn();
         }
 
         if (!boolImg) {
             $("#archivoPreg").addClass("fileRed");
             $("#error").text($("#error").html() + "Seleccione un archivo. ");
-            $("#error").show();
+            $("#error").fadeIn();
         }
 
         /*
