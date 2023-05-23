@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     //let arrayElems = [$("#nomUsu"), $("#corElec"), $("#pass1"), $("#pass2")];
-    let arrayBools = [boolUsu = false, boolCor = false, boolPass = false, boolReUser = false];
+    let arrayBools = [boolUsu = false, boolCor = false, boolPass = false, boolReUser = true];
 
     $("#corElec").keyup(function () {
         var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
@@ -23,9 +23,11 @@ $(document).ready(function () {
 
     $("#registrar").click(function (event) {
         event.preventDefault();
+        console.log($("#nomUsu").val());
+        if(arrayBools[0]){
         $.ajax({
             data:{nombre_usuario: $("#nomUsu").val(), function:"checkUsuario"},
-            url:'http://127.0.0.1/P-GINAWEB/servicios.php',
+            url:'http://192.168.0.31/P-GINAWEB/servicios.php',
             type:'post',
             success:function(response){
                 console.log(response == 0);
@@ -45,8 +47,9 @@ $(document).ready(function () {
                 //console.log({"usu": boolUsu, "pass": boolPass, "correo": boolCor, "indice" : index});
 
                 if (index == arrayBools.length) {
+                    //event.preventDefault();
                     $("form").submit();
-                }       
+                } 
                 
                 
 
@@ -55,15 +58,12 @@ $(document).ready(function () {
                     switch (index) {
                         case 0:
                             $("#error").text("Error: Usuario invalido");
-                        break;
                         case 1:
-                            $("#error").text("Error: Correo electronico invalido");
-                        break;
+                            $("#error").text($("#error").text()+" Error: Correo electronico invalido");
                         case 2:
-                            $("#error").text("Error: Contraseña invalida");
-                        break;
+                            $("#error").text($("#error").text()+" Error: Contraseña invalida");
                         case 3:
-                            $("#error").text("Error: Este usuario ya existe");
+                            $("#error").text($("#error").text()+" Error: Este usuario ya existe");
                         break;
                     }
                     $("#error").show();
@@ -73,7 +73,36 @@ $(document).ready(function () {
                 
             }
         });
+        
+    } else {
+        for (let index = 0; index <= arrayBools.length; index++) {
+            //console.log({"usu": boolUsu, "pass": boolPass, "correo": boolCor, "indice" : index});
+
+            if (index == arrayBools.length) {
+                //event.preventDefault();
+                $("form").submit();
+            } 
+            
             
 
+            $("#error").text("");
+            if (arrayBools[index] == false) {
+                switch (index) {
+                    case 0:
+                        $("#error").text("Error: Usuario invalido");
+                    case 1:
+                        $("#error").text($("#error").text()+" Error: Correo electronico invalido");
+                    case 2:
+                        $("#error").text($("#error").text()+" Error: Contraseña invalida");
+                    break;
+                }
+                $("#error").show();
+                return;
+            }
+            
+            
+        }
+    }
         });
+    
     });

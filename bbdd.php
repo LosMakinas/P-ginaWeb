@@ -401,5 +401,32 @@
 
                 return $id_usuario;
         }
+        function eliminarDatosUsuario($id)
+        {
+                $mysqli = connectBBDD();
+
+                $sql = "CALL resetProgress(?)";
+
+                $sentencia = $mysqli->prepare($sql);
+                if(!$sentencia)
+                {
+                        echo "Fallo en la preparacion de la sentencia: ".$mysqli->errno;
+                }
+
+                $asignar = $sentencia->bind_param("i", $id);
+                if(!$asignar)
+                {
+                        echo "Fallo al asignar la sentencia: ".$mysqli->errno;
+                }
+
+                $ejecucion = $sentencia->execute();
+                if(!$ejecucion)
+                {
+                        echo "Fallo en la ejecución de la sentencia: ".$mysqli->errno;
+                }
+
+                $mysqli->close();
+                return $ejecucion;                
+        }
 
 ?>
