@@ -35,10 +35,23 @@
                         <a class="nav-link" href="index.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="login.php">Login</a>
+                    <?php
+                        session_start();
+                        if(empty($_SESSION['usuario']))
+                        {
+                            echo '<a class="nav-link" href="login.php">Login</a>';
+                        }
+                        
+                    ?>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="register.php">Registro</a>
+                    <?php
+                        if(empty($_SESSION['usuario']))
+                        {
+                            echo '<a class="nav-link" href="register.php">Registro</a>';
+                        }
+                        
+                    ?>   
                     </li>
                     <li class="nav-item">                        
                         <a class="nav-link" href="verPreguntas.php">Ver Preguntas</a>
@@ -46,7 +59,7 @@
                     
                     <li class="nav-item ml-0 ml-lg-4">
                         <?php
-                            session_start();
+                            
                             
                             if(!empty($_SESSION['usuario']) && isset($_SESSION['usuario']))
                             {
