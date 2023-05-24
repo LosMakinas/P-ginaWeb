@@ -87,7 +87,7 @@
                             <div id = "contenido">
                                 <h2 id="titulo">Preguntas almacenadas</h2>
                                 <ul>
-                                  <li>
+                                  <!--<li>-->
                                     <?php
 
                                         include_once 'bbdd.php';
@@ -96,6 +96,8 @@
 
                                         for($i = 0; $i < $tamaño; $i++)
                                         {
+
+                                            echo '<div class ="pregunta">';
                                             echo '<h3>'.$preguntas[$i]['pregunta'].'</h3>';
                                             echo '<h4>'.$preguntas[$i]['descripcion'].'</h4>';
                                             /*
@@ -153,12 +155,12 @@
                                                 if(!$preguntas[$i]['validada'])
                                                 {
                                                     echo '<div class="actions">';
-                                                        echo '<a href="modificarPregunta.php?idPregunta='.$preguntas[$i]['_id'].'"><button class="btn-favorite">editar</button></a>';
-                                                        echo '<a href="eliminarPregunta.php?idPregunta='.$preguntas[$i]['_id'].'"><button class="btn-report">eliminar</button></a>';
+                                                        echo '<a href="modificarPregunta.php?idPregunta='.$preguntas[$i]['_id'].'"><button class="btn-favorite">Editar</button></a>';
+                                                        echo '<a href="eliminarPregunta.php?idPregunta='.$preguntas[$i]['_id'].'"><button class="btn-report">Eliminar</button></a>';
 
                                                         if ($usuario['administrador'])
                                                         {
-                                                            echo '<a href="validarPregunta.php?idPregunta='.$preguntas[$i]['_id'].'"><button class="btn-report">validar</button></a>';
+                                                            echo '<a href="validarPregunta.php?idPregunta='.$preguntas[$i]['_id'].'"><button class="btn-report">Validar</button></a>';
                                                         }
                                                                                                     
                                                     echo '</div>';
@@ -169,8 +171,8 @@
                                                     if ($usuario['administrador'])
                                                     {
                                                         echo '<div class="actions">';
-                                                            echo '<a href="modificarPregunta.php?idPregunta='.$preguntas[$i]['_id'].'"><button class="btn-favorite">editar</button></a>';
-                                                            echo '<a href="eliminarPregunta.php?idPregunta='.$preguntas[$i]['_id'].'"><button class="btn-report">eliminar</button></a>';                                               
+                                                            echo '<a href="modificarPregunta.php?idPregunta='.$preguntas[$i]['_id'].'"><button class="btn-favorite">Editar</button></a>';
+                                                            echo '<a href="eliminarPregunta.php?idPregunta='.$preguntas[$i]['_id'].'"><button class="btn-report">Eliminar</button></a>';                                               
                                                         echo '</div>';
                                                     }
                                                 }
@@ -179,13 +181,14 @@
                                             }
 
                                             
+                                            echo '</div>';
                                             
                                         }
                                         
                                         ?>
                                     
                                         
-                                  </li>
+                                  <!--</li>-->
                                   
                                 </ul>
                                 </div>

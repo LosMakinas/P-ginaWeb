@@ -2,6 +2,10 @@ $(document).ready(function()
 {
     let boolDropdown = true;
     let boolTextFiled = true;
+    let boolResp1 = true;
+    let boolResp2= true;
+    let boolResp3 = true;
+    let boolResp4 = true;
     let boolRadio = true;
     let boolImg = true;
     let boolTem = true;
@@ -10,7 +14,8 @@ $(document).ready(function()
     $("#enviarPreg").click(function(event)
     {
         event.preventDefault();
-        if(boolTextFiled && boolSegs && boolDropdown && boolTem)
+        
+        if(boolTextFiled && boolSegs && boolDropdown && boolTem && boolResp1 && boolResp2 && boolResp3 && boolResp4)
         {
             $("form").submit();
         }
@@ -18,37 +23,91 @@ $(document).ready(function()
         $("#error").html();
 
         if (!boolTextFiled) {
-            $(".pregunta").css({backgroundColor: 'red'});
-            $("#error").html($("#error").html() + "Preguntas o respuestas invalidas. ");
+            $("#pregunta").css({backgroundColor: 'red'});
+            $("#error").html("");
+            $("#error").html("Error/Es: ");
+            $("#error").html($("#error").html() + "Pregunta inválida. ");
             $("#error").show();
+        } else {
+            $("#pregunta").css({backgroundColor: 'white'});
+        }
+
+        if(!boolResp1) {
+            $("#respuesta1").css({backgroundColor: 'red'});
+            $("#error").html("");
+            $("#error").html("Error/Es: ");
+            $("#error").html($("#error").html() + "Respuesta 1 inválida. ");
+            $("#error").show();
+        }else {
+            $("#respuesta1").css({backgroundColor: 'white'});
+        }
+
+        if(!boolResp2) {
+            $("#respuesta2").css({backgroundColor: 'red'});
+            $("#error").html("");
+            $("#error").html("Error/Es: ");
+            $("#error").html($("#error").html() + "Respuesta 2 inválida. ");
+            $("#error").show();
+        }else {
+            $("#respuesta2").css({backgroundColor: 'white'});
+        }
+
+        if(!boolResp3) {
+            $("#respuesta3").css({backgroundColor: 'red'});
+            $("#error").html("");
+            $("#error").html("Error/Es: ");
+            $("#error").html($("#error").html() + "Respuesta 3 inválida. ");
+            $("#error").show();
+        }else {
+            $("#respuesta3").css({backgroundColor: 'white'});
+        }
+
+        if(!boolResp4) {
+            $("#respuesta4").css({backgroundColor: 'red'});
+            $("#error").html("");
+            $("#error").html("Error/Es: ");
+            $("#error").html($("#error").html() + "Respuesta 4 inválida. ");
+            $("#error").show();
+        }else {
+            $("#respuesta4").css({backgroundColor: 'white'});
         }
 
         if (!boolSegs) {
             $("#tiempo").css({backgroundColor: 'red'});
-            $("#error").text($("#error").html() + "Tiempo invalido. ");
+            $("#error").html("");
+            $("#error").html("Error/Es: ");
+            $("#error").text($("#error").html() + "Tiempo inválido. ");
             $("#error").show();
         }
 
         if (!boolDropdown) {
             $("#dificultades").css({backgroundColor: 'red'});
+            $("#error").html("");
+            $("#error").html("Error/Es: ");
             $("#error").text($("#error").html() + "Seleccione una dificultad. ");
             $("#error").show();
         }
 
         if (!boolTem) {
             $("#tematica").css({backgroundColor: 'red'});
+            $("#error").html("");
+            $("#error").html("Error/Es: ");
             $("#error").text($("#error").html() + "Seleccione una tematica. ");
             $("#error").show();
         }
 
         if (!boolRadio) {
             $(".radioPreg").css({backgroundColor: 'red'});
+            $("#error").html("");
+            $("#error").html("Error/Es: ");
             $("#error").text($("#error").html() + "Seleccione una respuesta correcta. ");
             $("#error").show();
         }
 
         if (!boolImg) {
             $("#archivoPreg").addClass("fileRed");
+            $("#error").html("");
+            $("#error").html("Error/Es: ");
             $("#error").text($("#error").html() + "Seleccione un archivo. ");
             $("#error").show();
         }
@@ -79,17 +138,38 @@ $(document).ready(function()
 
     $(".pregunta").keyup(function()
     {
-        $(this).css({backgroundColor: 'white'});
-        var pregunta = $(this).val();
+        $(".pregunta").css({backgroundColor: 'white'});
 
-        if(pregunta == "")
+        if($("#pregunta").val() == "")
         {
             boolTextFiled = false;
+        } else {
             
+            boolTextFiled = true;
         }
 
-        if ($("#respuesta1").val() != "" && $("#respuesta2").val() != "" && $("#respuesta3").val() != "" && $("#respuesta4").val() != "") {
-            boolTextFiled = true;
+        if ($("#respuesta1").val() == "" ) {
+            boolResp1 = false;
+        } else {
+            boolResp1 = true;
+        }
+
+        if($("#respuesta2").val() == "" ){
+            boolResp2= false;
+        } else {
+            boolResp2 = true;
+        }
+
+        if($("#respuesta3").val() == "") {
+            boolResp3 = false;
+        } else {
+            boolResp3 = true;
+        }
+
+        if ($("#respuesta4").val() == "") {
+            boolResp4 = false;
+        } else {
+            boolResp4 = true;
         }
     });
 

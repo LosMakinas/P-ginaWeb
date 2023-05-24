@@ -103,8 +103,8 @@ input[type="number"]
 
 #error
 {
-    margin: 10px;
-    padding: 5px;
+    margin-top: 10px;
+    padding: 10px;
     background-color: beige;
     display: none;
     color: red;
@@ -139,4 +139,75 @@ li
 .btn-report, .btn-favorite
 {
     border-radius: 20px;
+}
+
+.pregunta
+{
+    margin: 15px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    list-style-type: none;
+    text-decoration: none;
+    border-radius: 20px;
+    background-color: #8fafce;
+    box-shadow: black 5px 5px;
+}
+
+.pregunta > p > b
+{
+    color: #6e3a00;
+    /*color: #e49d23;*/
+}
+
+.pregunta > p
+{
+    color: #334b48;
+    font-size: larger;
+    
+}
+
+#contenido
+{
+    list-style-type: none;
+    text-decoration: none;
+
+}
+
+
+
+/* CSS */
+.actions > a > button {
+  background: #f06161;
+  border: 1px solid #f06161;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 16px;
+  min-height: 40px;
+  outline: 0;
+  padding: 12px 14px;
+  text-align: center;
+  text-rendering: geometricprecision;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+}
+
+.actions > a > button:hover,
+.actions > a > button:active {
+  background-color: initial;
+  background-position: 0 0;
+  color: #f06161;
+}
+
+.actions > a > button:active {
+  opacity: .5;
 }

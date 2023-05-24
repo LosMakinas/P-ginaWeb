@@ -83,7 +83,7 @@
 
     $funciona = insertarPregunta($pregunta);
 
-    $ubicacionDeseada = "Images/". $funciona . basename($_FILES['imagen']['name']);
+    $ubicacionDeseada = "images/". $funciona . basename($_FILES['imagen']['name']);
 
     if(!empty($_FILES['imagen']['name']))
     {

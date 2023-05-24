@@ -36,10 +36,7 @@
                 return $preguntas;
         }
 
-        function getPreguntasNoValidadas()
-        {
-
-        }
+        
 
         function insertarPregunta($pregunta)
         {
