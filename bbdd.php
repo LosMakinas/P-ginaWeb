@@ -41,9 +41,7 @@
         function insertarPregunta($pregunta)
         {
                 $url = 'http://192.168.0.97:8080/api/preguntas';
-                
-                
-                
+             
                 $opciones = array(
                         "http" => array(
                             "header" => "Content-type: application/json\r\n",
@@ -62,7 +60,7 @@
   
                     # si no salimos allá arriba, todo va bien
                     $resultadoJson = json_decode($resultado, true);
-                    $pregunta['imagen'] = "Images/". $resultadoJson['data']['_id'] . $pregunta['imagen'];
+                    $pregunta['imagen'] = "images/". $resultadoJson['data']['_id'] . $pregunta['imagen'];
 
 
                     $id = $resultadoJson['data']['_id'];
