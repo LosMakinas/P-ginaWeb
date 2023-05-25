@@ -5,6 +5,13 @@
  
     include 'bbdd.php';
 
+    if(empty($_SESSION['usuario']))
+    {
+                                                              
+        header('location: login.php');
+                                                              
+    }
+
     session_destroy();
     $borrarDatos = eliminarDatosUsuario($id);
 
@@ -12,7 +19,7 @@
         $funciona = eliminarUsuario($id);
     }
     
-    header("location: login.php");
+    header("location: index.php");
 
   
 
